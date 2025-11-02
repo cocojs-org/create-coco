@@ -1,0 +1,8 @@
+/build
+/dist
+**/node_modules
+/coverage
+/.github
+/.DS_Store
+/pnpm-lock.yaml
+/LICENSE
