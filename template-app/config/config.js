@@ -10,9 +10,7 @@ const config = {
                     use: [
                         'style-loader',
                         'css-loader',
-                        {
-                            loader: 'postcss-loader',
-                        },
+                        'postcss-loader',
                     ],
                 },
             ],

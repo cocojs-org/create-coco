@@ -130,10 +130,8 @@ dist
 .pnp.*
 
 # coco-mvc
-**/.coco
 **/dts-tmp
 **/tsconfig.tsbuildinfo
-.rollup.cache
 
 # ide
 .idea
