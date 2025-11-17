@@ -1,4 +1,4 @@
-import { webApplication } from 'coco-mvc';
+import { webApplication } from '@cocojs/mvc';
 
 @webApplication()
 class Application {}

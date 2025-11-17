@@ -1,4 +1,4 @@
-import { view, reactive } from 'coco-mvc';
+import { view, reactive } from '@cocojs/mvc';
 
 @view()
 class Link {

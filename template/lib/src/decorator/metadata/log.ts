@@ -1,4 +1,4 @@
-import { Metadata, target, Target, id } from 'coco-mvc';
+import { Metadata, target, Target, id } from '@cocojs/mvc';
 
 @id('Log')
 @target([Target.Type.Method])
