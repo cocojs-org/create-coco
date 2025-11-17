@@ -16,7 +16,7 @@ async function create() {
                 message: '项目类型',
                 choices: [
                     { title: '应用', description: '基于前端路由的CSR项目', value: 'app' },
-                    { title: '库', description: '可供复用的组件库或工具库项目', value: 'lib' }
+                    { title: '库', description: '可供复用的组件库或工具库项目', value: 'lib' },
                 ],
             },
             {
@@ -52,8 +52,8 @@ async function create() {
                 message: '是否使用tailwindcss',
                 choices: [
                     { title: '是', description: '集成tailwindcss及构建配置', value: true },
-                    { title: '否', description: '不集成任何样式库', value: false }
-                ]
+                    { title: '否', description: '不集成任何样式库', value: false },
+                ],
             },
         ],
         {
@@ -124,7 +124,7 @@ async function create() {
 }
 
 function cli() {
-    create()
+    create();
 }
 
 // TODO: 添加测试
