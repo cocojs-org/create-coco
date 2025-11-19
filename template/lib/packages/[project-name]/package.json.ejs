@@ -1,0 +1,28 @@
+{
+  "name": "<%= name %>",
+  "version": "0.0.1",
+  "description": "",
+  "type": "module",
+  "module": "dist/bundle.esm.js",
+  "types": "dist/types/lib.d.ts",
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build:lib": "coco lib build",
+    "build": "pnpm run build:lib"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@cocojs/cli": "^<%= cliVersion %>",
+    "@cocojs/mvc": "^<%= mvcVersion %>",
+    "ts-patch": "3.1.2",
+    "typescript": "5.3.3"
+  },
+  "peerDependencies": {
+    "@cocojs/mvc": "^<%= mvcVersion %>"
+  },
+  "dependencies": {}
+}
