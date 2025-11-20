@@ -21,8 +21,8 @@ async function create() {
                     { title: '库', description: '可供复用的组件库或工具库项目', value: 'lib' },
                 ],
                 format: (value: string) => {
-                    return tempType = value;
-                }
+                    return (tempType = value);
+                },
             },
             {
                 type: 'text',

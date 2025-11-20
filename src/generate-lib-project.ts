@@ -16,11 +16,7 @@ const devProjectName = 'dev';
  * @param projectName 指定的项目名称，也作为文件夹名称
  * @param useTailwindcss 是否使用tailwindcss
  */
-async function generateLibProject(
-    targetDir: string,
-    projectName: string,
-    useTailwindcss: boolean,
-) {
+async function generateLibProject(targetDir: string, projectName: string, useTailwindcss: boolean) {
     const targetProjectDir = path.join(targetDir, projectName);
     const templateFolder = path.resolve(__dirname, '..', 'template', useTailwindcss ? 'lib-tailwind' : 'lib');
     // 复制非ejs文件
@@ -52,7 +48,7 @@ async function generateLibProject(
             cliVersion,
             mvcVersion,
         });
-        const outputFile = file.replace(/\.ejs$/, '')
+        const outputFile = file.replace(/\.ejs$/, '');
         const targetPath = path.join(targetProjectDir, outputFile);
         await fse.outputFileSync(targetPath, renderedContent);
     }
@@ -60,8 +56,8 @@ async function generateLibProject(
     // 重命名
     renameSync(
         path.join(targetProjectDir, 'packages', placeholderProjectName),
-        path.join(targetProjectDir, 'packages', projectName),
-    )
+        path.join(targetProjectDir, 'packages', projectName)
+    );
 }
 
 export default generateLibProject;

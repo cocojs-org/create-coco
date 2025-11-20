@@ -1,5 +1,5 @@
 import { webApplication } from '@cocojs/mvc';
-import "./input.css"
+import './input.css';
 
 @webApplication()
 class Application {}

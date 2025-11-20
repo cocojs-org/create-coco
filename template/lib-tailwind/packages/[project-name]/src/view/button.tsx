@@ -1,4 +1,4 @@
-import {view} from '@cocojs/mvc';
+import { view } from '@cocojs/mvc';
 
 interface IButtonProps {
     children: string;
@@ -9,7 +9,7 @@ interface IButtonProps {
 
 @view()
 class Button {
-    props: IButtonProps
+    props: IButtonProps;
 
     color = () => {
         switch (this.props.type) {
@@ -18,25 +18,28 @@ class Button {
             case 'link':
                 return 'text-primary';
             case 'primary':
-                return "text-white bg-primary";
+                return 'text-white bg-primary';
             default:
-                return "text-primary border-primary border";
+                return 'text-primary border-primary border';
         }
-    }
+    };
 
     onClick = () => {
         if (!this.props.loading) {
             this.props.onClick?.();
         }
-    }
+    };
 
     render() {
-        return <div
-            className={`inline-flex justify-center items-center h-10 px-8 rounded-md cursor-pointer select-none ${this.color()}`}
-            onClick={this.onClick}
-        >
-            {this.props.children}{this.props.loading ? `...` : null}
-        </div>
+        return (
+            <div
+                className={`inline-flex justify-center items-center h-10 px-8 rounded-md cursor-pointer select-none ${this.color()}`}
+                onClick={this.onClick}
+            >
+                {this.props.children}
+                {this.props.loading ? `...` : null}
+            </div>
+        );
     }
 }
 
