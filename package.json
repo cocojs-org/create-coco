@@ -1,7 +1,7 @@
 {
     "name": "create-coco",
     "description": "Create a new cocojs project in seconds.",
-    "version": "0.0.1-alpha202511221252",
+    "version": "0.0.1-alpha202511221304",
     "main": "dist/index.js",
     "bin": {
         "create-coco": "bin/create-coco.js"
@@ -35,8 +35,5 @@
         "glob": "^11.0.3",
         "prompts": "^2.4.2"
     },
-    "packageManager": "pnpm@10.20.0",
-    "pnpm": {
-        "git-checks": false
-    }
+    "packageManager": "pnpm@10.20.0"
 }
