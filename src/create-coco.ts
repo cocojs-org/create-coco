@@ -5,9 +5,11 @@ import path from 'path';
 import fse from 'fs-extra';
 import process from 'process';
 import { cliVersion, mvcVersion } from './version';
+import generateLibProject from './generate-lib-project';
 
 async function create() {
     let userCancelled = false;
+    let tempType = '';
     const response = await prompts(
         [
             {
@@ -16,8 +18,11 @@ async function create() {
                 message: '项目类型',
                 choices: [
                     { title: '应用', description: '基于前端路由的CSR项目', value: 'app' },
-                    { title: '库', description: '可供复用的组件库或工具库项目', value: 'lib' }
+                    { title: '库', description: '可供复用的组件库或工具库项目', value: 'lib' },
                 ],
+                format: (value: string) => {
+                    return (tempType = value);
+                },
             },
             {
                 type: 'text',
@@ -26,14 +31,11 @@ async function create() {
                 validate: (value: string) => {
                     if (!value.trim()) {
                         return '项目名称不能为空';
+                    } else if (tempType === 'lib' && value === 'dev') {
+                        return '当创建库项目时，名称不能是dev';
                     }
                     return true;
                 },
-            },
-            {
-                type: 'text',
-                name: 'author',
-                message: '作者',
             },
             {
                 type: (projectName: string) => {
@@ -52,8 +54,8 @@ async function create() {
                 message: '是否使用tailwindcss',
                 choices: [
                     { title: '是', description: '集成tailwindcss及构建配置', value: true },
-                    { title: '否', description: '不集成任何样式库', value: false }
-                ]
+                    { title: '否', description: '不集成任何样式库', value: false },
+                ],
             },
         ],
         {
@@ -66,7 +68,7 @@ async function create() {
     if (userCancelled) {
         return;
     }
-    const { type, projectName, author, deleteExistFolder, useTailwindcss } = response;
+    const { type, projectName, deleteExistFolder, useTailwindcss } = response;
     const targetDir = path.resolve(process.cwd(), projectName);
     if (deleteExistFolder === false) {
         return;
@@ -94,6 +96,10 @@ async function create() {
         console.error('模版目录不存在', tempFolderPath, type);
         return;
     }
+    if (type === 'lib') {
+        await generateLibProject(process.cwd(), projectName, useTailwindcss);
+        return;
+    }
     // 复制非ejs文件
     const noEjsFiles = glob.sync(`**/*`, {
         cwd: tempFolderPath,
@@ -116,7 +122,6 @@ async function create() {
     const packageJsonEjs = path.resolve(tempFolderPath, 'package.json.ejs');
     const renderedContent = await ejs.renderFile(packageJsonEjs, {
         name: projectName,
-        author,
         cliVersion,
         mvcVersion,
     });
@@ -124,7 +129,7 @@ async function create() {
 }
 
 function cli() {
-    create()
+    create();
 }
 
 // TODO: 添加测试

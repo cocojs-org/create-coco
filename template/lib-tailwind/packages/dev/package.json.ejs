@@ -1,16 +1,13 @@
 {
-  "name": "<%= name %>",
-  "version": "0.0.1",
-  "description": "",
+  "private": true,
+  "description": "开发工具",
+  "type": "module",
   "scripts": {
-    "prepare": "ts-patch install -s",
-    "dev": "NODE_ENV=dev coco app dev",
-    "build": "coco app build"
+    "dev": "coco app dev"
   },
-  "author": "",
-  "license": "ISC",
   "devDependencies": {
     "@cocojs/cli": "^<%= cliVersion %>",
+    "@tailwindcss/cli": "^4.1.14",
     "@tailwindcss/postcss": "^4.1.14",
     "css-loader": "^7.1.2",
     "postcss": "^8.5.6",
@@ -21,6 +18,7 @@
     "typescript": "5.3.3"
   },
   "dependencies": {
-    "@cocojs/mvc": "^<%= mvcVersion %>"
+    "@cocojs/mvc": "^<%= mvcVersion %>",
+    "<%= name %>": "workspace:^"
   }
 }
