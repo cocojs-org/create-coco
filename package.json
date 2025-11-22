@@ -13,7 +13,8 @@
     ],
     "scripts": {
         "build": "node ./scripts/build/index.js",
-        "format": "prettier --write ."
+        "format": "prettier --write .",
+        "prettier:check": "prettier --check 'src/**/*.*'"
     },
     "keywords": [],
     "homepage": "https://github.com/cocojs-org/create-coco",
