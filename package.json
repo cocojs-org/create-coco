@@ -14,7 +14,8 @@
     "scripts": {
         "build": "node ./scripts/build/index.js",
         "format": "prettier --write .",
-        "prettier:check": "prettier --check 'src/**/*.*'"
+        "prettier:check": "prettier --check 'src/**/*.*'",
+        "release": "pnpm run build && pnpm publish"
     },
     "keywords": [],
     "homepage": "https://github.com/cocojs-org/create-coco",
