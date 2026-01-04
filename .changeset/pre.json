@@ -4,5 +4,7 @@
   "initialVersions": {
     "create-coco": "0.0.1-alpha202511221313"
   },
-  "changesets": []
+  "changesets": [
+    "sour-beans-juggle"
+  ]
 }
