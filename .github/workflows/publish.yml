@@ -29,7 +29,11 @@ jobs:
         run: npm install -g npm@latest
       - name: Install dependencies
         run: pnpm install --frozen-lockfile
-      - name: Prettier check
-        run: pnpm run prettier:check
-      - run: pnpm run build
-      - run: pnpm publish --no-git-checks --tag alpha
+      - name: Create and publish pre-release versions (OIDC)
+        uses: changesets/action@v1
+        with:
+          commit: "chore: update pre-release versions [OIDC]"
+          title: "chore: update pre-release versions (OIDC)"
+          publish: pnpm run release
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
